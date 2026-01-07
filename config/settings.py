@@ -13,47 +13,9 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import environ
 from datetime import timedelta
-import psycopg2
-from dotenv import load_dotenv
-import os
 
 # Load environment variables from .env
-load_dotenv()
 
-# Fetch variables de BD
-# USER = os.getenv("user")
-# PASSWORD = os.getenv("password")
-# HOST = os.getenv("host")
-# PORT = os.getenv("port")
-# DBNAME = os.getenv("dbname")
-
-# # Connect to the database
-# try:
-#     connection = psycopg2.connect(
-#         user=USER,
-#         password=PASSWORD,
-#         host=HOST,
-#         port=PORT,
-#         dbname=DBNAME
-#     )
-#     print("Connection successful!")
-    
-#     # Create a cursor to execute SQL queries
-#     cursor = connection.cursor()
-    
-#     # Example query
-#     cursor.execute("SELECT NOW();")
-#     result = cursor.fetchone()
-#     print("Current Time:", result)
-
-#     # Close the cursor and connection
-#     cursor.close()
-#     connection.close()
-#     print("Connection closed.")
-
-# except Exception as e:
-#     print(f"Failed to connect: {e}")
-# # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -147,9 +109,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("DB_NAME"),
+        "USER": env("DB_USER"),
+        "PASSWORD": env("DB_PASSWORD"),
+        "HOST": env("DB_HOST"),
+        "PORT": env("DB_PORT"),
     }
 }
 
@@ -200,9 +166,3 @@ REST_FRAMEWORK = {
     ),
 }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
