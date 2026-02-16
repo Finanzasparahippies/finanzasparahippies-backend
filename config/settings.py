@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "apps.products",
     "apps.mediahub",
     "apps.core",
+    'ckeditor',
 ]
 
 AUTH_USER_MODEL = "accounts.User"
