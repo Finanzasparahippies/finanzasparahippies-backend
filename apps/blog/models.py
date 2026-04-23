@@ -45,7 +45,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
     excerpt = models.TextField(blank=True)
-    content = models.TextField()
+    content = RichTextField()
     status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES,

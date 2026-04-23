@@ -31,4 +31,5 @@ urlpatterns = [
     path("api/products/", include("apps.products.urls")),
     path("api/newsletter/", include("apps.newsletter.urls")),
     path("api/media/", include("apps.mediahub.urls")),
+    path("api/resources/", include("apps.resources.urls")),
 ]
