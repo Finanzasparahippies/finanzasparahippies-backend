@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "apps.mediahub",
     "apps.core",
     "apps.resources",
+    "apps.diagrams",
     'ckeditor',
 ]
 
@@ -253,3 +254,5 @@ EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
 EMAIL_USE_TLS = env("EMAIL_USE_TLS", cast=bool, default=False)
 
+# Cloudflare Turnstile
+TURNSTILE_SECRET_KEY = env("TURNSTILE_SECRET_KEY", default="1x0000000000000000000000000000000AA")
